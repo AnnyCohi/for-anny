@@ -1,0 +1,2334 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Anny 💙</title>
+  <meta name="theme-color" content="#0b2bff" />
+
+  <!-- ВСТАВЬ CSS КОТОРЫЙ Я ДАЛ В ПРЕДЫДУЩЕМ СООБЩЕНИИ -->
+  <style>
+    /* сюда вставь полный CSS из прошлого сообщения */
+:root{
+  --bg0:#050b1a;
+  --bg1:#071431;
+
+  --card: rgba(255,255,255,.08);
+  --card2: rgba(255,255,255,.06);
+  --stroke: rgba(255,255,255,.16);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+
+  --blue1:#1b5cff;
+  --blue2:#3aa0ff;
+  --blue3:#5fe3ff;
+  --pink:#ff4fd8;
+
+  --shadow: 0 18px 60px rgba(0,0,0,.45);
+
+  --radius: 22px;
+  --radius2: 16px;
+
+  --ring: 0 0 0 6px rgba(58,160,255,.18);
+  --ring2: 0 0 0 6px rgba(255,79,216,.12);
+
+  --grid: rgba(255,255,255,.06);
+
+  --ok:#2dffb5;
+  --warn:#ffd24d;
+  --bad:#ff5d73;
+}
+
+/* ВАЖНО: атрибут data-theme стоит на BODY */
+body[data-theme="light"]{
+  --bg0:#f6f9ff;
+  --bg1:#eaf1ff;
+
+  --card: rgba(10,40,120,.06);
+  --card2: rgba(10,40,120,.045);
+  --stroke: rgba(10,40,120,.12);
+
+  --text: rgba(10,22,60,.92);
+  --muted: rgba(10,22,60,.70);
+
+  --shadow: 0 18px 60px rgba(20,40,120,.15);
+
+  --grid: rgba(10,40,120,.08);
+
+  --ring: 0 0 0 6px rgba(58,160,255,.20);
+  --ring2: 0 0 0 6px rgba(255,79,216,.14);
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  color:var(--text);
+
+  /* DARK фон */
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgba(58,160,255,.45), transparent 60%),
+    radial-gradient(900px 700px at 85% 20%, rgba(95,227,255,.35), transparent 55%),
+    radial-gradient(1000px 700px at 70% 85%, rgba(255,79,216,.22), transparent 60%),
+    radial-gradient(800px 600px at 30% 70%, rgba(27,92,255,.25), transparent 55%),
+    linear-gradient(180deg, #040914, #070f24 55%, #060b1a);
+
+  overflow-x:hidden;
+}
+
+/* ✅ СВЕТЛЫЙ фон (чинит переключение темы) */
+body[data-theme="light"]{
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgba(58,160,255,.20), transparent 60%),
+    radial-gradient(900px 700px at 85% 20%, rgba(95,227,255,.15), transparent 55%),
+    radial-gradient(1000px 700px at 70% 85%, rgba(255,79,216,.09), transparent 60%),
+    radial-gradient(800px 600px at 30% 70%, rgba(27,92,255,.12), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(900px 500px at 20% 0%, black 45%, transparent 75%);
+  pointer-events:none;
+  opacity:.6;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(95,227,255,.12), transparent 55%),
+    radial-gradient(circle at 70% 40%, rgba(255,79,216,.10), transparent 60%),
+    radial-gradient(circle at 50% 70%, rgba(58,160,255,.14), transparent 60%);
+  animation: bgFloat 28s ease-in-out infinite alternate;
+  pointer-events:none;
+  z-index:-1;
+}
+@keyframes bgFloat{
+  0%{ transform: translateY(-20px) scale(1); }
+  100%{ transform: translateY(20px) scale(1.04); }
+}
+
+body[data-theme="light"]::after{
+  opacity:.45;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(58,160,255,.10), transparent 55%),
+    radial-gradient(circle at 70% 40%, rgba(255,79,216,.08), transparent 60%),
+    radial-gradient(circle at 50% 70%, rgba(95,227,255,.10), transparent 60%);
+}
+
+.bgNoise{
+  position:fixed;
+  inset:0;
+  background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity:.25;
+  pointer-events:none;
+  z-index:-2;
+}
+body[data-theme="light"] .bgNoise{ opacity:.18; }
+
+.blob{
+  position:fixed;
+  filter: blur(70px);
+  opacity:.28;
+  border-radius: 999px;
+  pointer-events:none;
+  mix-blend-mode: screen;
+}
+.blob.b1{
+  left:-120px; top:-120px;
+  width:520px; height:520px;
+  background:
+    radial-gradient(circle at 30% 30%, var(--blue2), transparent 60%),
+    radial-gradient(circle at 70% 70%, var(--pink), transparent 60%);
+  animation: float1 14s ease-in-out infinite;
+}
+.blob.b2{
+  right:-160px; top:120px;
+  width:520px; height:520px;
+  background:
+    radial-gradient(circle at 35% 35%, var(--blue1), transparent 60%),
+    radial-gradient(circle at 65% 65%, var(--blue3), transparent 60%);
+  animation: float2 18s ease-in-out infinite;
+}
+.blob.b3{
+  left:20%; bottom:-200px;
+  width:620px; height:620px;
+  background:
+    radial-gradient(circle at 35% 35%, var(--blue3), transparent 62%),
+    radial-gradient(circle at 70% 70%, var(--blue2), transparent 62%);
+  animation: float3 20s ease-in-out infinite;
+}
+@keyframes float1{ 0%,100%{ transform: translate(-10px,-10px) scale(1); } 50%{ transform: translate(30px,10px) scale(1.04);} }
+@keyframes float2{ 0%,100%{ transform: translate(10px,0) scale(1);} 50%{ transform: translate(-25px,18px) scale(1.06);} }
+@keyframes float3{ 0%,100%{ transform: translate(0,10px) scale(1);} 50%{ transform: translate(20px,-20px) scale(1.05);} }
+
+a{ color:inherit; text-decoration:none; }
+
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding: 22px 18px 70px;
+  position:relative;
+}
+
+.nav{
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 12px 14px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  border-radius: 18px;
+}
+
+.brand{ display:flex; align-items:center; gap:14px; min-width:220px; }
+
+/* ✅ логотип большой с фото внутри (bg.jpeg) */
+.logo{
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%),
+    url("bg.jpeg") center/cover no-repeat;
+
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow:
+    0 18px 40px rgba(27,92,255,.35),
+    inset 0 0 0 1px rgba(255,255,255,.25);
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+body[data-theme="light"] .logo{
+  border-color: rgba(10,40,120,.16);
+  box-shadow:
+    0 18px 40px rgba(27,92,255,.18),
+    inset 0 0 0 1px rgba(10,40,120,.10);
+}
+.logo:hover{
+  transform: scale(1.05);
+  box-shadow:
+    0 22px 60px rgba(27,92,255,.45),
+    inset 0 0 0 1px rgba(255,255,255,.35);
+}
+.logo::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.55), transparent 70%);
+  transform: rotate(20deg);
+  animation: shine 4.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes shine{
+  0%{ transform: translateX(-40%) rotate(20deg); opacity:0;}
+  25%{opacity:.9;}
+  60%{opacity:.25;}
+  100%{ transform: translateX(40%) rotate(20deg); opacity:0;}
+}
+
+.brand h1{ font-size:14px; line-height:1.1; margin:0; letter-spacing:.5px; }
+.brand p{ margin:2px 0 0; font-size:12px; color:var(--muted); }
+
+.navlinks{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  font-size: 13px;
+  color: var(--muted);
+  user-select:none;
+}
+.chip:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.24);
+  color: var(--text);
+}
+
+.actions{ display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px; }
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  backdrop-filter: blur(10px);
+  cursor:pointer;
+  color: var(--text);
+  font-weight: 600;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  box-shadow: 0 10px 28px rgba(0,0,0,.16);
+  user-select:none;
+}
+.btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.26); }
+.btn:active{ transform: translateY(0px) scale(.99); }
+
+.btn.primary{
+  border-color: rgba(58,160,255,.55);
+  background: linear-gradient(135deg, rgba(27,92,255,.85), rgba(58,160,255,.55));
+  box-shadow: 0 16px 40px rgba(27,92,255,.22);
+}
+
+.icon{ width:18px; height:18px; display:inline-block; }
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+  margin-top: 16px;
+  align-items:stretch;
+}
+@media (max-width: 980px){
+  .hero{ grid-template-columns: 1fr; }
+  .brand{ min-width:auto; }
+  .actions{ min-width:auto; }
+}
+
+.card{
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+.card .inner{ padding: 18px; }
+
+.title{
+  font-size: 44px;
+  line-height: 1.05;
+  margin: 0 0 10px;
+  letter-spacing: -0.8px;
+}
+.subtitle{
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.spark{
+  display:inline-block;
+  background: linear-gradient(90deg, var(--blue3), var(--blue2), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 18px rgba(95,227,255,.12);
+}
+
+.heroStats{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+@media (max-width: 560px){
+  .heroStats{ grid-template-columns: 1fr; }
+  .title{ font-size: 36px; }
+}
+
+.stat{
+  padding: 12px 12px;
+  border-radius: var(--radius2);
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+}
+.stat b{ display:block; font-size: 14px; }
+.stat small{ color: var(--muted); font-size: 12px; }
+
+.heroRight{ display:grid; gap: 12px; }
+
+.photoCard{
+  min-height: 210px;
+  position:relative;
+  overflow:hidden;
+  border-radius: var(--radius);
+}
+.photoBg{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(900px 300px at 20% 20%, rgba(255,255,255,.20), transparent 55%),
+    radial-gradient(600px 260px at 70% 20%, rgba(95,227,255,.25), transparent 55%),
+    linear-gradient(135deg, rgba(27,92,255,.55), rgba(58,160,255,.25)),
+    url("") center/cover no-repeat;
+  transform: scale(1.05);
+  filter: saturate(1.1) contrast(1.05);
+}
+.photoOverlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(5,11,26,.20), rgba(5,11,26,.55));
+}
+body[data-theme="light"] .photoOverlay{
+  background: linear-gradient(180deg, rgba(246,249,255,.05), rgba(234,241,255,.55));
+}
+
+.photoCard .inner{
+  position:relative;
+  z-index:2;
+  padding: 16px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.badgeRow{ display:flex; gap:8px; flex-wrap:wrap; }
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border:1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+  font-size: 12px;
+  color: var(--text);
+}
+body[data-theme="light"] .badge{
+  border-color: rgba(10,40,120,.12);
+  background: rgba(10,40,120,.05);
+}
+.badge .dot{
+  width:8px; height:8px;
+  border-radius:999px;
+  background: var(--ok);
+  box-shadow: 0 0 0 6px rgba(45,255,181,.12);
+}
+.badge .dot.blue{ background: var(--blue2); box-shadow: 0 0 0 6px rgba(58,160,255,.14); }
+.badge .dot.pink{ background: var(--pink); box-shadow: 0 0 0 6px rgba(255,79,216,.12); }
+
+.mini{
+  display:grid;
+  gap:10px;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 560px){ .mini{ grid-template-columns: 1fr; } }
+
+.mini .tile{
+  padding: 12px;
+  border-radius: var(--radius2);
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+}
+.tile h3{ margin:0 0 6px; font-size: 13px; }
+.tile p{ margin:0; color:var(--muted); font-size: 12px; }
+
+section{ scroll-margin-top: 90px; margin-top: 18px; }
+
+.sectionHead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  padding: 10px 2px;
+}
+.sectionHead h2{ margin:0; font-size: 18px; letter-spacing: .2px; }
+.sectionHead span{ color:var(--muted); font-size: 12px; }
+
+.grid2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 980px){ .grid2{ grid-template-columns: 1fr; } }
+
+input, textarea, select{
+  width:100%;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  padding: 12px 12px;
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  outline:none;
+  transition: box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  font-size: 14px;
+}
+textarea{ min-height: 120px; resize: vertical; }
+input:focus, textarea:focus, select:focus{
+  box-shadow: var(--ring);
+  border-color: rgba(58,160,255,.55);
+  background: rgba(255,255,255,.08);
+}
+
+.row{ display:flex; gap:10px; }
+.row > *{ flex:1; }
+@media (max-width: 560px){ .row{ flex-direction:column; } }
+
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+}
+.gitem{
+  grid-column: span 4;
+  min-height: 150px;
+  border-radius: 18px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.gitem:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.28); }
+.gitem img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+  filter: saturate(1.05) contrast(1.02);
+}
+.gitem .cap{
+  position:absolute;
+  left:10px; bottom:10px; right:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(5,11,26,.35);
+  backdrop-filter: blur(10px);
+  font-size: 12px;
+  color: rgba(255,255,255,.90);
+}
+body[data-theme="light"] .gitem .cap{
+  background: rgba(246,249,255,.65);
+  color: rgba(10,22,60,.92);
+  border-color: rgba(10,40,120,.12);
+}
+.cap .pill{
+  padding: 6px 10px;
+  border-radius: 999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.10);
+  font-weight: 800;
+  cursor:pointer;
+  user-select:none;
+}
+.cap .pill:hover{ border-color: rgba(255,255,255,.28); }
+
+@media (max-width: 980px){ .gitem{ grid-column: span 6; } }
+@media (max-width: 560px){ .gitem{ grid-column: span 12; } }
+
+.timeline{ display:grid; gap:10px; }
+.titem{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding: 12px;
+  border-radius: 18px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+}
+.ticon{
+  width:38px; height:38px;
+  border-radius: 14px;
+  display:grid; place-items:center;
+  border:1px solid rgba(255,255,255,.18);
+  background: linear-gradient(135deg, rgba(27,92,255,.70), rgba(58,160,255,.25));
+  box-shadow: 0 14px 30px rgba(27,92,255,.18);
+  flex:0 0 auto;
+}
+.titem h4{ margin:0 0 2px; font-size: 14px; }
+.titem p{ margin:0; font-size: 12px; color:var(--muted); }
+
+.toast{
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  padding: 12px 14px;
+  border-radius: 16px;
+  border:1px solid var(--stroke);
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(14px);
+  color: rgba(255,255,255,.92);
+  box-shadow: var(--shadow);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 200;
+  max-width: min(92vw, 560px);
+}
+body[data-theme="light"] .toast{
+  background: rgba(246,249,255,.75);
+  color: rgba(10,22,60,.92);
+}
+.toast.show{ opacity:1; transform: translateX(-50%) translateY(-6px); }
+
+.modal{
+  position: fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  z-index: 180;
+  padding: 16px;
+}
+.modal.show{ display:grid; }
+
+.modalBox{
+  width: min(980px, 96vw);
+  border-radius: 22px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+.modalTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 12px 12px 0;
+}
+.modalTop .x{
+  width:40px; height:40px;
+  border-radius: 14px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.06);
+  display:grid; place-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+.modalTop .x:hover{ border-color: rgba(255,255,255,.28); }
+.modalImg{
+  width:100%;
+  max-height: 72vh;
+  object-fit: cover;
+  display:block;
+}
+
+.reveal{
+  opacity:0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.show{ opacity:1; transform: translateY(0); }
+
+.hint{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255,255,255,.28);
+  background: rgba(255,255,255,.04);
+  color: var(--muted);
+  font-size: 12px;
+}
+body[data-theme="light"] .hint{
+  border-color: rgba(10,40,120,.25);
+  background: rgba(10,40,120,.03);
+}
+
+.kbd{
+  padding: 3px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 11px;
+}
+
+/* ===== Easter ===== */
+.easter{
+  position: fixed;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 240px;
+  opacity: 0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(95,227,255,.38), transparent 55%),
+    radial-gradient(circle at 60% 70%, rgba(255,79,216,.22), transparent 58%);
+  transition: opacity .4s ease, top .6s ease;
+  z-index: 250;
+}
+.easter.show{ opacity: 1; top: -40px; }
+
+/* ===== Fullscreen Compliment ===== */
+.cmp{
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  z-index: 260;
+  padding: 18px;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+}
+body[data-theme="light"] .cmp{
+  background: rgba(246,249,255,.65);
+}
+.cmp.show{ display: grid; }
+
+.cmpBox{
+  width: min(980px, 94vw);
+  border-radius: 26px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+  transform: translateY(12px) scale(.98);
+  opacity: 0;
+  animation: cmpIn .35s ease forwards;
+}
+@keyframes cmpIn{ to{ transform: translateY(0) scale(1); opacity: 1; } }
+
+.cmpGlow{
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(95,227,255,.28), transparent 55%),
+    radial-gradient(circle at 70% 50%, rgba(58,160,255,.22), transparent 55%),
+    radial-gradient(circle at 50% 80%, rgba(255,79,216,.18), transparent 58%);
+  filter: blur(18px);
+  opacity: .95;
+  pointer-events:none;
+}
+.cmpInner{ position:relative; padding: 22px 20px 18px; }
+
+.cmpTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cmpTitle{
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .3px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.cmpClose{
+  width:44px;
+  height:44px;
+  border-radius: 16px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,.06);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+.cmpClose:hover{ border-color: rgba(255,255,255,.28); }
+
+.cmpText{
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  font-size: clamp(34px, 6vw, 72px);
+  margin: 0;
+  text-align: center;
+  padding: 10px 8px 16px;
+  background: linear-gradient(90deg, var(--blue3), var(--blue2), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 22px rgba(95,227,255,.14);
+}
+.cmpHint{
+  text-align:center;
+  color: var(--muted);
+  font-size: 12px;
+  padding-bottom: 6px;
+}
+.cmpActions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding: 0 0 6px;
+}
+
+/* ===== Footer love text ===== */
+footer{
+  margin-top: 16px;
+  padding: 16px 2px 0;
+  color: var(--muted);
+  font-size: 12px;
+  display:flex;
+  justify-content:space-between;
+  gap: 12px;
+  flex-wrap:wrap;
+}
+
+.footerLove{
+  width:100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.footerLeft{ justify-self: start; color: var(--muted); font-size: 12px; }
+.footerCenter{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+
+.footerRight{
+  justify-self: end;
+  font-weight: 900;
+  font-size: clamp(18px, 2.4vw, 28px);
+  letter-spacing: -.5px;
+  white-space: nowrap;
+
+  background: linear-gradient(90deg, var(--blue3), var(--blue2), var(--pink), var(--blue2), var(--blue3));
+  background-size: 300% 100%;
+  animation: loveFlow 8s ease-in-out infinite;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 0 18px rgba(95,227,255,.18);
+}
+.footerRight .loveName{ padding-left: 6px; font-size: 1.05em; }
+
+@keyframes loveFlow{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+@media (max-width: 700px){
+  .footerLove{ grid-template-columns: 1fr; text-align:center; }
+  .footerLeft,.footerRight{ justify-self:center; }
+}
+
+  </style>
+</head>
+
+<body data-theme="dark">
+  <div class="bgNoise"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="easter" id="easter"></div>
+
+  <div class="wrap">
+
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" id="logo" title="Нажми 7 раз 😉"></div>
+        <div>
+          <h1>For <span class="spark">Anny</span> 💙</h1>
+          <p id="today">—</p>
+        </div>
+      </div>
+
+      <div class="navlinks">
+        <a class="chip" href="#moments">Моменты</a>
+        <a class="chip" href="#notes">Записки</a>
+        <a class="chip" href="#countdown">Таймер</a>
+        <a class="chip" href="#music">Музыка</a>
+        <a class="chip" href="#movies">Фильмы</a>
+        <a class="chip" href="#message">Сообщение</a>
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="themeBtn" title="Тема">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 16.8a1 1 0 0 1 1 1V22a1 1 0 1 1-2 0v-1.2a1 1 0 0 1 1-1ZM4 11a1 1 0 0 1 1 1 7 7 0 0 0 7 7 1 1 0 1 1 0 2A9 9 0 0 1 3 12a1 1 0 0 1 1-1Zm17-1a1 1 0 0 1 1 1 9 9 0 0 1-9 9 1 1 0 1 1 0-2 7 7 0 0 0 7-7 1 1 0 0 1 1-1Z" fill="currentColor"/>
+          </svg>
+          Тема
+        </button>
+
+        <button class="btn primary" id="shareBtn" title="Поделиться">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M16 8a3 3 0 1 0-2.82-4H13a3 3 0 0 0 0 6c.5 0 .98-.12 1.4-.33l-6.2 3.1A3 3 0 0 0 6 12a3 3 0 1 0 2.82 4H9a3 3 0 0 0-.12-.82l6.22-3.11c.42.21.9.33 1.4.33a3 3 0 1 0 0-6Z" fill="currentColor"/>
+          </svg>
+          Поделиться
+        </button>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card reveal">
+        <div class="inner">
+          <h2 class="title">Энни, это маленький <span class="spark">мир</span> для тебя 💙</h2>
+
+          <p class="subtitle">
+            Сайт сделан так, чтобы им было приятно пользоваться: красиво, быстро, удобно.
+            Здесь можно сохранять моменты, писать записки, ставить дату до события и включать музыку.
+          </p>
+
+          <div class="heroStats">
+            <div class="stat">
+              <b id="statDays">—</b>
+              <small>дней до выбранной даты</small>
+            </div>
+            <div class="stat">
+              <b id="statNotes">—</b>
+              <small>сохранённых записок</small>
+            </div>
+            <div class="stat">
+              <b id="statPhotos">—</b>
+              <small>мгновений в галерее</small>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+            <button class="btn primary" id="complimentBtn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-7-4.35-9.5-8.26C.3 9.2 2.4 5.5 6.2 5.5c1.85 0 3.3.95 3.8 1.65.5-.7 1.95-1.65 3.8-1.65 3.8 0 5.9 3.7 3.7 7.24C19 16.65 12 21 12 21Z" fill="currentColor"/>
+              </svg>
+              Банка комплиментов
+            </button>
+
+            <button class="btn" id="copyLinkBtn" title="Скопировать">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M8 7a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-1a1 1 0 1 1 0-2h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v1a1 1 0 1 1-2 0V7Zm-5 6a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7Zm3-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1H6Z" fill="currentColor"/>
+              </svg>
+              Скопировать текст
+            </button>
+          </div>
+
+          <div class="hint" style="margin-top:14px;">
+            <div style="margin-top:1px;">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 6a1 1 0 0 1 1 1c0 1.3-1 1.55-1.7 2.1-.6.45-.8.7-.8 1.4v.5a1 1 0 1 1-2 0v-.5c0-1.55.7-2.25 1.55-2.9.7-.55.95-.75.95-1.1a1 1 0 0 0-1-1c-.55 0-1.05.35-1.2.85a1 1 0 1 1-1.9-.62A3 3 0 0 1 12 8Zm0 9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <div style="color:var(--text); font-weight:700; margin-bottom:4px;">Лайфхак</div>
+              В галерее и заметках всё сохраняется автоматически в браузере.
+              Секрет: нажми на логотип <span class="kbd">7</span> раз 🙂
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="heroRight reveal">
+        <div class="card photoCard">
+          <div class="photoBg" id="heroBg"></div>
+          <div class="photoOverlay"></div>
+          <div class="inner">
+            <div class="badgeRow">
+              <div class="badge"><span class="dot"></span> нежно</div>
+              <div class="badge"><span class="dot blue"></span> красиво</div>
+              <div class="badge"><span class="dot pink"></span> по-настоящему</div>
+            </div>
+            <div>
+              <div style="font-size:14px; font-weight:800; letter-spacing:.3px;">Любимое рядом</div>
+              <div style="color:var(--muted); font-size:12px; margin-top:4px;">
+                Можно поставить фото на фон: вставь ссылку в галерее — и нажми “Обложка”.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner mini">
+            <div class="tile">
+              <h3>Рандом-комплимент</h3>
+              <p id="complimentText">Нажми “банку комплиментов” — будет сюрприз.</p>
+            </div>
+            <div class="tile">
+              <h3>День недели</h3>
+              <p id="weekday">—</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner">
+            <div class="sectionHead" style="padding:0 0 8px;">
+              <h2>Планы & идеи</h2>
+              <span>мини-таймлайн</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOMENTS -->
+    <section id="moments" class="reveal">
+      <div class="sectionHead">
+        <h2>Моменты</h2>
+        <span>галерея + обложка</span>
+      </div>
+
+      <div class="card">
+        <div class="inner">
+          <div class="row">
+            <div>
+              <label style="font-size:12px; color:var(--muted);">Ссылка на фото (URL)</label>
+              <input id="photoUrl" placeholder="https://... (Telegram CDN/Imgur/свой сервер)" />
+            </div>
+            <div>
+              <label style="font-size:12px; color:var(--muted);">Подпись</label>
+              <input id="photoCaption" placeholder="Например: 'Наш вечер' / 'Улыбка'" />
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+            <button class="btn primary" id="addPhotoBtn">Добавить в галерею</button>
+            <button class="btn" id="resetGalleryBtn" title="Очистить галерею">Очистить</button>
+          </div>
+
+          <div style="margin-top:12px;" class="gallery" id="gallery"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTES -->
+    <section id="notes" class="reveal">
+      <div class="sectionHead">
+        <h2>Записки</h2>
+        <span id="notesCount">—</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="inner">
+            <div class="row">
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Заголовок</label>
+                <input id="noteTitle" placeholder="Например: 'Доброе утро'" />
+              </div>
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Тег</label>
+                <input id="noteTag" placeholder="например: 💙 / важно / мило" />
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label style="font-size:12px; color:var(--muted);">Текст</label>
+              <textarea id="noteText" placeholder="Напиши что-то тёплое..."></textarea>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+              <button class="btn primary" id="addNoteBtn">Сохранить записку</button>
+              <button class="btn" id="resetNotesBtn">Очистить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner" id="notesList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown" class="reveal">
+      <div class="sectionHead">
+        <h2>Таймер</h2>
+        <span>до события</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="inner">
+            <div class="row">
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Дата</label>
+                <input id="targetDate" type="date" />
+              </div>
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Название события</label>
+                <input id="targetLabel" placeholder="Например: 'Встреча' / 'Поездка'" />
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+              <button class="btn primary" id="saveDateBtn">Сохранить</button>
+              <button class="btn" id="clearDateBtn">Сбросить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner">
+            <div class="sectionHead" style="padding:0 0 8px;">
+              <h2 id="cdLabelOut">—</h2>
+              <span>осталось</span>
+            </div>
+
+            <div class="heroStats">
+              <div class="stat"><b id="cdDays">—</b><small>дней</small></div>
+              <div class="stat"><b id="cdHours">—</b><small>часов</small></div>
+              <div class="stat"><b id="cdMins">—</b><small>минут</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music" class="reveal">
+      <div class="sectionHead">
+        <h2>Музыка</h2>
+        <span id="musicCount">—</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="inner">
+            <div>
+              <label style="font-size:12px; color:var(--muted);">Ссылка на трек (URL)</label>
+              <input id="musicUrl" placeholder="https://... (YouTube/Spotify/любая ссылка)" />
+            </div>
+            <div style="margin-top:10px;">
+              <label style="font-size:12px; color:var(--muted);">Название</label>
+              <input id="musicTitle" placeholder="Например: 'Наша песня'" />
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+              <button class="btn primary" id="addTrackBtn">Добавить</button>
+              <button class="btn" id="resetMusicBtn">Очистить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner" id="musicList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVIES -->
+    <section id="movies" class="reveal">
+      <div class="sectionHead">
+        <h2>Любимые фильмы</h2>
+        <span id="favMoviesCount">—</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="inner">
+            <div class="row">
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Фильм</label>
+                <input id="favMovieTitle" placeholder="Название фильма" />
+              </div>
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Год</label>
+                <input id="favMovieYear" placeholder="Например: 2014" />
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label style="font-size:12px; color:var(--muted);">Почему люблю / заметка</label>
+              <textarea id="favMovieNote" placeholder="Пара слов..."></textarea>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+              <button class="btn primary" id="addFavMovieBtn">Добавить в любимые</button>
+              <button class="btn" id="resetFavMoviesBtn">Очистить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner" id="favMoviesList"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;" class="card">
+        <div class="inner">
+          <div class="sectionHead" style="padding:0 0 8px;">
+            <h2>Лучшие фильмы (топы)</h2>
+            <span id="bestListMeta">—</span>
+          </div>
+
+          <div class="row">
+            <div>
+              <label style="font-size:12px; color:var(--muted);">Выбери список</label>
+              <select id="bestListSelect">
+                <option value="sight_sound_critics_2022">Sight & Sound 2022</option>
+                <option value="afi_2007">AFI 2007</option>
+                <option value="imdb_top10">IMDb Top-10</option>
+                <option value="rt_top10">Rotten Tomatoes Top-10</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:12px; color:var(--muted);">Подсказка</label>
+              <div class="hint" style="margin:0;">
+                Нажми “Добавить в любимые” слева и внеси фильм вручную 😊
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;" id="bestMoviesList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGE -->
+    <section id="message" class="reveal">
+      <div class="sectionHead">
+        <h2>Сообщение</h2>
+        <span>собери красивый текст</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="inner">
+            <div class="row">
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Коротко</label>
+                <input id="msgShort" placeholder="Например: 'Я скучаю по тебе'" />
+              </div>
+              <div>
+                <label style="font-size:12px; color:var(--muted);">Эмодзи</label>
+                <input id="msgEmoji" placeholder="💙✨🙂" />
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label style="font-size:12px; color:var(--muted);">Длиннее</label>
+              <textarea id="msgLong" placeholder="Например: 'Хочу, чтобы ты улыбнулась...'"></textarea>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+              <button class="btn primary" id="makeMsgBtn">Собрать</button>
+              <button class="btn" id="copyMsgBtn">Скопировать</button>
+              <button class="btn" id="shareMsgBtn">Отправить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="inner">
+            <div class="sectionHead" style="padding:0 0 8px;">
+              <h2>Результат</h2>
+              <span>готово к отправке</span>
+            </div>
+            <pre id="msgOut" style="margin:0; white-space:pre-wrap; color:var(--text); font-family:inherit;">—</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="reveal">
+      <div class="footerLove">
+        <div class="footerLeft">© For Anny 💙</div>
+
+        
+        <div class="footerRight">Я люблю тебя <span class="loveName">Kiyashka</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">—</div>
+
+  <!-- Modal (gallery image view) -->
+  <div class="modal" id="modal">
+    <div class="modalBox">
+      <div class="modalTop">
+        <div style="padding: 10px 10px 0; color:var(--muted); font-size:12px;" id="modalCaption">—</div>
+        <div class="x" id="modalClose" title="Закрыть">✕</div>
+      </div>
+      <img class="modalImg" id="modalImg" src="" alt="" />
+    </div>
+  </div>
+
+  <!-- Fullscreen compliment -->
+  <div class="cmp" id="cmp" aria-hidden="true">
+    <div class="cmpBox">
+      <div class="cmpGlow"></div>
+      <div class="cmpInner">
+        <div class="cmpTop">
+          <div class="cmpTitle">💙 Банка комплиментов</div>
+          <div class="cmpClose" id="cmpClose" title="Закрыть">✕</div>
+        </div>
+
+        <h2 class="cmpText" id="cmpText">—</h2>
+
+        <div class="cmpActions">
+          <button class="btn primary" id="cmpNext">Ещё</button>
+          <button class="btn" id="cmpCopy">Скопировать</button>
+        </div>
+
+        <div class="cmpHint">Нажми Esc или кликни по фону, чтобы закрыть</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ВСТАВЬ JS (следующим сообщением дам полный, чтобы тема работала) -->
+  <script>
+    /* сюда вставь полный JS */
+	(() => {
+  "use strict";
+
+  /* =========================
+     Helpers
+  ========================== */
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  const KEY = {
+    THEME: "anny_theme_v1",
+    PHOTOS: "anny_photos_v1",
+    HERO_BG: "anny_hero_bg_v1",
+    NOTES: "anny_notes_v1",
+    DATE: "anny_date_v1",
+    DATE_LABEL: "anny_date_label_v1",
+    MUSIC: "anny_music_v1",
+    MOVIES_FAV: "anny_movies_fav_v1",
+  };
+
+  const pad2 = (n) => String(n).padStart(2, "0");
+
+  const safeJSON = (s, fallback) => {
+    try { return JSON.parse(s); } catch { return fallback; }
+  };
+
+  const load = (k, fallback) => safeJSON(localStorage.getItem(k) || "", fallback);
+  const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+  const loadStr = (k, fallback="") => localStorage.getItem(k) ?? fallback;
+  const saveStr = (k, v) => localStorage.setItem(k, String(v));
+
+  /* =========================
+     Toast
+  ========================== */
+  const toastEl = $("#toast");
+  let toastTimer = null;
+
+  const toast = (msg) => {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
+  };
+
+  /* =========================
+     Clipboard / Share
+  ========================== */
+  const copyText = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast("Скопировано ✨");
+      return true;
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        toast("Скопировано ✨");
+        return true;
+      } catch {
+        toast("Не получилось скопировать 😔");
+        return false;
+      } finally {
+        ta.remove();
+      }
+    }
+  };
+
+  const share = async ({ title, text, url }) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+        toast("Отправлено ✅");
+        return true;
+      } catch {
+        return false;
+      }
+    } else {
+      const payload = [text, url].filter(Boolean).join("\n");
+      await copyText(payload);
+      return true;
+    }
+  };
+
+  /* =========================
+     Date / weekday
+  ========================== */
+  const setHeaderDates = () => {
+    const now = new Date();
+    const todayEl = $("#today");
+    const weekdayEl = $("#weekday");
+    const options = { year:"numeric", month:"long", day:"numeric" };
+    const optionsW = { weekday:"long" };
+
+    if (todayEl) todayEl.textContent = now.toLocaleDateString("ru-RU", options);
+    if (weekdayEl) {
+      const w = now.toLocaleDateString("ru-RU", optionsW);
+      weekdayEl.textContent = w.charAt(0).toUpperCase() + w.slice(1);
+    }
+  };
+
+  /* =========================
+     Reveal on scroll
+  ========================== */
+  const initReveal = () => {
+    const els = $$(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(e => e.classList.add("show"));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      for (const ent of entries) {
+        if (ent.isIntersecting) {
+          ent.target.classList.add("show");
+          io.unobserve(ent.target);
+        }
+      }
+    }, { threshold: 0.12 });
+    els.forEach(e => io.observe(e));
+  };
+
+  /* =========================
+     Theme (FIXED: works for whole site)
+  ========================== */
+  const applyTheme = (t) => {
+    const next = (t === "light") ? "light" : "dark";
+    document.body.setAttribute("data-theme", next);
+
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", next === "light" ? "#eaf1ff" : "#0b2bff");
+  };
+
+  const initTheme = () => {
+    let t = loadStr(KEY.THEME, "");
+    if (t !== "light" && t !== "dark") {
+      t = document.body.getAttribute("data-theme") || "dark";
+      if (!t) {
+        t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+    }
+    applyTheme(t);
+
+    const btn = $("#themeBtn");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        const cur = document.body.getAttribute("data-theme") || "dark";
+        const next = cur === "dark" ? "light" : "dark";
+        applyTheme(next);
+        saveStr(KEY.THEME, next);
+        toast(next === "light" ? "Светлая тема ☀️" : "Тёмная тема 🌙");
+      });
+    }
+  };
+
+  /* =========================
+     Hero background (cover)
+  ========================== */
+  const heroBgEl = $("#heroBg");
+  const setHeroBg = (url) => {
+    if (!heroBgEl) return;
+    heroBgEl.style.backgroundImage =
+      `radial-gradient(900px 300px at 20% 20%, rgba(255,255,255,.20), transparent 55%),
+       radial-gradient(600px 260px at 70% 20%, rgba(95,227,255,.25), transparent 55%),
+       linear-gradient(135deg, rgba(27,92,255,.55), rgba(58,160,255,.25)),
+       url("${url}")`;
+  };
+
+  const initHeroBg = () => {
+    const savedBg = loadStr(KEY.HERO_BG, "");
+    if (savedBg) setHeroBg(savedBg);
+  };
+
+  /* =========================
+     Timeline ideas (static)
+  ========================== */
+  const initTimeline = () => {
+    const tl = $("#timeline");
+    if (!tl) return;
+
+    const items = [
+      { icon: "✨", title: "Сделать обложку", text: "Выбери любимое фото в “Моменты” и нажми “Обложка”." },
+      { icon: "💌", title: "Записка на завтра", text: "Оставь сообщение, которое приятно прочитать утром." },
+      { icon: "🗓️", title: "Дата ожидания", text: "Поставь дату встречи/поездки — таймер будет радовать." },
+      { icon: "🎵", title: "Наша песня", text: "Добавь 1–2 трека, которые ассоциируются с нами." },
+    ];
+
+    tl.innerHTML = items.map(it => `
+      <div class="titem">
+        <div class="ticon">${it.icon}</div>
+        <div>
+          <h4>${it.title}</h4>
+          <p>${it.text}</p>
+        </div>
+      </div>
+    `).join("");
+  };
+
+  /* =========================
+     Compliments jar (fullscreen)
+  ========================== */
+  const compliments = [
+    "Ты умеешь делать мир мягче 💙",
+    "Твоя улыбка — как кнопка “счастье” 🙂",
+    "С тобой хочется быть лучше ✨",
+    "У тебя особенная энергия — тёплая и живая",
+    "Ты такая… настоящая. Это редкость",
+    "Я люблю слушать тебя — даже когда ты молчишь",
+    "Ты — мой любимый человек",
+    "С тобой у меня внутри спокойно",
+    "Ты — вдохновение 💫",
+    "Ты вкусно смеёшься 😄",
+    "Ты умеешь быть нежной и сильной одновременно",
+    "Ты для меня важнее, чем ты думаешь",
+    "Люблю тебя солнце, больше всего на этом свете 💙",
+  ];
+
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  const initCompliments = () => {
+    const smallText = $("#complimentText");
+    const btn = $("#complimentBtn");
+
+    const cmp = $("#cmp");
+    const cmpText = $("#cmpText");
+    const cmpClose = $("#cmpClose");
+    const cmpNext = $("#cmpNext");
+    const cmpCopy = $("#cmpCopy");
+
+    if (!btn || !cmp || !cmpText) return;
+
+    const showCompliment = () => {
+      const line = pick(compliments);
+      if (smallText) smallText.textContent = line;
+      cmpText.textContent = line;
+      cmp.classList.add("show");
+    };
+
+    const close = () => cmp.classList.remove("show");
+
+    btn.addEventListener("click", showCompliment);
+    if (cmpNext) cmpNext.addEventListener("click", showCompliment);
+
+    if (cmpCopy) {
+      cmpCopy.addEventListener("click", async () => {
+        const t = (cmpText.textContent || "").trim();
+        if (!t) return toast("Пусто 🙂");
+        await copyText(t);
+      });
+    }
+
+    if (cmpClose) cmpClose.addEventListener("click", close);
+
+    cmp.addEventListener("click", (e) => {
+      if (e.target === cmp) close();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  };
+
+  /* =========================
+     Gallery (Moments)
+  ========================== */
+  const sanitizeUrl = (u) => {
+    const s = String(u || "").trim();
+    if (!s) return "";
+    if (!/^https?:\/\//i.test(s)) return "";
+    return s;
+  };
+
+  const photosState = { list: [] };
+
+  const renderGallery = () => {
+    const g = $("#gallery");
+    if (!g) return;
+    g.innerHTML = "";
+
+    const list = photosState.list;
+
+    if (!list.length) {
+      g.innerHTML = `
+        <div class="hint" style="grid-column: 1 / -1;">
+          <div style="margin-top:1px;"><span class="kbd">+</span></div>
+          <div>Добавь первую ссылку на фото — и появится галерея 💙</div>
+        </div>`;
+      const stat = $("#statPhotos");
+      if (stat) stat.textContent = "0";
+      return;
+    }
+
+    const stat = $("#statPhotos");
+    if (stat) stat.textContent = String(list.length);
+
+    for (const p of list) {
+      const div = document.createElement("div");
+      div.className = "gitem";
+      div.dataset.id = p.id;
+      div.innerHTML = `
+        <img alt="" src="${p.url}">
+        <div class="cap">
+          <div style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+            ${escapeHtml(p.caption || "Момент")}
+          </div>
+          <div class="pill" data-action="cover" title="Сделать обложкой">Обложка</div>
+        </div>
+      `;
+
+      div.addEventListener("click", (e) => {
+        const act = e.target?.dataset?.action || "";
+        if (act === "cover") {
+          e.stopPropagation();
+          setHeroBg(p.url);
+          saveStr(KEY.HERO_BG, p.url);
+          toast("Обложка обновлена ✨");
+          return;
+        }
+        openModal(p.url, p.caption || "");
+      });
+
+      g.appendChild(div);
+    }
+  };
+
+  const saveGallery = () => save(KEY.PHOTOS, photosState.list);
+
+  const initGallery = () => {
+    photosState.list = load(KEY.PHOTOS, []);
+    if (!Array.isArray(photosState.list)) photosState.list = [];
+
+    const addBtn = $("#addPhotoBtn");
+    const resetBtn = $("#resetGalleryBtn");
+    const urlInp = $("#photoUrl");
+    const capInp = $("#photoCaption");
+
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        const url = sanitizeUrl(urlInp?.value);
+        const cap = String(capInp?.value || "").trim();
+
+        if (!url) {
+          toast("Нужна ссылка http(s) 😅");
+          return;
+        }
+
+        const item = {
+          id: cryptoRandomId(),
+          url,
+          caption: cap,
+          ts: Date.now(),
+        };
+        photosState.list.unshift(item);
+        saveGallery();
+        renderGallery();
+
+        if (urlInp) urlInp.value = "";
+        if (capInp) capInp.value = "";
+        toast("Добавлено 💙");
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        photosState.list = [];
+        saveGallery();
+        renderGallery();
+        toast("Галерея очищена");
+      });
+    }
+
+    renderGallery();
+  };
+
+  /* =========================
+     Notes
+  ========================== */
+  const notesState = { list: [] };
+
+  const renderNotes = () => {
+    const listEl = $("#notesList");
+    const countEl = $("#notesCount");
+    if (!listEl) return;
+
+    const list = notesState.list;
+
+    const statNotes = $("#statNotes");
+    if (statNotes) statNotes.textContent = String(list.length);
+
+    if (countEl) countEl.textContent = list.length ? `${list.length} шт.` : "пусто";
+
+    if (!list.length) {
+      listEl.innerHTML = `
+        <div class="hint">
+          <div style="margin-top:1px;"><span class="kbd">💌</span></div>
+          <div>Пока нет записок. Напиши одну — и она сохранится здесь.</div>
+        </div>`;
+      return;
+    }
+
+    listEl.innerHTML = list.map(n => `
+      <div class="titem">
+        <div class="ticon">💙</div>
+        <div style="width:100%;">
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <h4 style="margin:0">${escapeHtml(n.title || "Записка")}</h4>
+            <div style="display:flex; gap:8px; align-items:center;">
+              ${n.tag ? `<span class="kbd">${escapeHtml(n.tag)}</span>` : ""}
+              <span class="kbd" style="opacity:.85;">${formatDateTime(n.ts)}</span>
+              <span class="kbd" data-del="${n.id}" style="cursor:pointer;">Удалить</span>
+            </div>
+          </div>
+          <p style="margin-top:6px; white-space:pre-wrap;">${escapeHtml(n.text || "")}</p>
+        </div>
+      </div>
+    `).join("");
+
+    $$("[data-del]", listEl).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-del");
+        notesState.list = notesState.list.filter(x => x.id !== id);
+        save(KEY.NOTES, notesState.list);
+        renderNotes();
+        toast("Удалено");
+      });
+    });
+  };
+
+  const initNotes = () => {
+    notesState.list = load(KEY.NOTES, []);
+    if (!Array.isArray(notesState.list)) notesState.list = [];
+
+    const addBtn = $("#addNoteBtn");
+    const resetBtn = $("#resetNotesBtn");
+    const tInp = $("#noteTitle");
+    const tagInp = $("#noteTag");
+    const txt = $("#noteText");
+
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        const title = String(tInp?.value || "").trim();
+        const tag = String(tagInp?.value || "").trim();
+        const text = String(txt?.value || "").trim();
+
+        if (!title && !text) {
+          toast("Напиши хоть одну строчку 🙂");
+          return;
+        }
+
+        const note = {
+          id: cryptoRandomId(),
+          title,
+          tag,
+          text,
+          ts: Date.now(),
+        };
+        notesState.list.unshift(note);
+        save(KEY.NOTES, notesState.list);
+        renderNotes();
+
+        if (tInp) tInp.value = "";
+        if (tagInp) tagInp.value = "";
+        if (txt) txt.value = "";
+        toast("Сохранено 💙");
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        notesState.list = [];
+        save(KEY.NOTES, notesState.list);
+        renderNotes();
+        toast("Записки очищены");
+      });
+    }
+
+    renderNotes();
+  };
+
+  /* =========================
+     Countdown
+  ========================== */
+  const getTarget = () => {
+    const dateStr = loadStr(KEY.DATE, "");
+    if (!dateStr) return null;
+    const d = new Date(dateStr + "T00:00:00");
+    return isNaN(d.getTime()) ? null : d;
+  };
+
+  const updateCountdown = () => {
+    const d = getTarget();
+    const label = loadStr(KEY.DATE_LABEL, "");
+
+    const statDays = $("#statDays");
+    const cdLabelOut = $("#cdLabelOut");
+    const cdDays = $("#cdDays");
+    const cdHours = $("#cdHours");
+    const cdMins = $("#cdMins");
+
+    if (cdLabelOut) cdLabelOut.textContent = label ? label : "—";
+
+    if (!d) {
+      if (statDays) statDays.textContent = "—";
+      if (cdDays) cdDays.textContent = "—";
+      if (cdHours) cdHours.textContent = "—";
+      if (cdMins) cdMins.textContent = "—";
+      return;
+    }
+
+    const now = new Date();
+    const end = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+    const diffMs = end.getTime() - now.getTime();
+
+    const totalMins = Math.max(0, Math.floor(diffMs / 60000));
+    const days = Math.floor(totalMins / (60 * 24));
+    const hours = Math.floor((totalMins - days * 60 * 24) / 60);
+    const mins = totalMins - days * 60 * 24 - hours * 60;
+
+    if (statDays) statDays.textContent = String(days);
+    if (cdDays) cdDays.textContent = String(days);
+    if (cdHours) cdHours.textContent = String(hours);
+    if (cdMins) cdMins.textContent = String(mins);
+  };
+
+  const initCountdown = () => {
+    const input = $("#targetDate");
+    const labelInp = $("#targetLabel");
+    const saveBtn = $("#saveDateBtn");
+    const clearBtn = $("#clearDateBtn");
+
+    const savedDate = loadStr(KEY.DATE, "");
+    const savedLabel = loadStr(KEY.DATE_LABEL, "");
+
+    if (input && savedDate) input.value = savedDate;
+    if (labelInp && savedLabel) labelInp.value = savedLabel;
+
+    if (saveBtn) {
+      saveBtn.addEventListener("click", () => {
+        const d = input?.value || "";
+        const lbl = String(labelInp?.value || "").trim();
+        if (!d) {
+          toast("Выбери дату 🙂");
+          return;
+        }
+        saveStr(KEY.DATE, d);
+        saveStr(KEY.DATE_LABEL, lbl);
+        toast("Сохранено 🗓️");
+        updateCountdown();
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        localStorage.removeItem(KEY.DATE);
+        localStorage.removeItem(KEY.DATE_LABEL);
+        if (input) input.value = "";
+        if (labelInp) labelInp.value = "";
+        toast("Сброшено");
+        updateCountdown();
+      });
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 20_000);
+  };
+
+  /* =========================
+     Music list (links)
+  ========================== */
+  const musicState = { list: [] };
+
+  const renderMusic = () => {
+    const listEl = $("#musicList");
+    const countEl = $("#musicCount");
+    if (!listEl) return;
+
+    const list = musicState.list;
+
+    if (countEl) countEl.textContent = list.length ? `${list.length} тр.` : "пусто";
+    if (!list.length) {
+      listEl.innerHTML = `
+        <div class="hint">
+          <div style="margin-top:1px;"><span class="kbd">🎵</span></div>
+          <div>Добавь ссылку на трек — и он появится в плейлисте.</div>
+        </div>`;
+      return;
+    }
+
+    listEl.innerHTML = list.map(t => `
+      <div class="titem">
+        <div class="ticon">🎵</div>
+        <div style="width:100%;">
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <h4 style="margin:0">${escapeHtml(t.title || "Трек")}</h4>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <a class="kbd" href="${t.url}" target="_blank" rel="noopener">Открыть</a>
+              <span class="kbd" data-mdel="${t.id}" style="cursor:pointer;">Удалить</span>
+            </div>
+          </div>
+          <p style="margin-top:6px; word-break:break-word;">${escapeHtml(t.url)}</p>
+        </div>
+      </div>
+    `).join("");
+
+    $$("[data-mdel]", listEl).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-mdel");
+        musicState.list = musicState.list.filter(x => x.id !== id);
+        save(KEY.MUSIC, musicState.list);
+        renderMusic();
+        toast("Удалено");
+      });
+    });
+  };
+
+  const initMusic = () => {
+    musicState.list = load(KEY.MUSIC, []);
+    if (!Array.isArray(musicState.list)) musicState.list = [];
+
+    const addBtn = $("#addTrackBtn");
+    const resetBtn = $("#resetMusicBtn");
+    const urlInp = $("#musicUrl");
+    const titleInp = $("#musicTitle");
+
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        const url = String(urlInp?.value || "").trim();
+        const title = String(titleInp?.value || "").trim();
+
+        if (!/^https?:\/\//i.test(url)) {
+          toast("Нужна ссылка http(s) 🙂");
+          return;
+        }
+
+        const item = {
+          id: cryptoRandomId(),
+          url,
+          title,
+          ts: Date.now(),
+        };
+        musicState.list.unshift(item);
+        save(KEY.MUSIC, musicState.list);
+        renderMusic();
+
+        if (urlInp) urlInp.value = "";
+        if (titleInp) titleInp.value = "";
+        toast("Добавлено 🎵");
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        musicState.list = [];
+        save(KEY.MUSIC, musicState.list);
+        renderMusic();
+        toast("Плейлист очищен");
+      });
+    }
+
+    renderMusic();
+  };
+
+  /* =========================
+     Movies
+  ========================== */
+  const moviesState = { fav: [] };
+
+  const BEST_LISTS = {
+    sight_sound_critics_2022: {
+      meta: "BFI Sight & Sound — Critics’ poll 2022",
+      items: [
+        "Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles (1975)",
+        "Vertigo (1958)",
+        "Citizen Kane (1941)",
+        "Tokyo Story (1953)",
+        "In the Mood for Love (2000)",
+        "2001: A Space Odyssey (1968)",
+        "Beau Travail (1999)",
+        "Mulholland Drive (2001)",
+        "Man with a Movie Camera (1929)",
+        "Singin’ in the Rain (1952)",
+      ],
+    },
+    afi_2007: {
+      meta: "AFI 100 Years…100 Movies — 10th Anniversary (2007)",
+      items: [
+        "Citizen Kane (1941)",
+        "The Godfather (1972)",
+        "Casablanca (1942)",
+        "Raging Bull (1980)",
+        "Singin’ in the Rain (1952)",
+        "Gone with the Wind (1939)",
+        "Lawrence of Arabia (1962)",
+        "Schindler’s List (1993)",
+        "Vertigo (1958)",
+        "The Wizard of Oz (1939)",
+      ],
+    },
+    imdb_top10: {
+      meta: "IMDb Top 250 — топ-10 (по пользовательскому рейтингу)",
+      items: [
+        "The Shawshank Redemption (1994)",
+        "The Godfather (1972)",
+        "The Dark Knight (2008)",
+        "The Godfather Part II (1974)",
+        "12 Angry Men (1957)",
+        "The Lord of the Rings: The Return of the King (2003)",
+        "Schindler’s List (1993)",
+        "Pulp Fiction (1994)",
+        "The Lord of the Rings: The Fellowship of the Ring (2001)",
+        "The Good, the Bad and the Ugly (1966)",
+      ],
+    },
+    rt_top10: {
+      meta: "Rotten Tomatoes — Best Movies of All Time (топ-10)",
+      items: [
+        "The Godfather (1972)",
+        "Seven Samurai (1954)",
+        "Casablanca (1942)",
+        "Rear Window (1954)",
+        "L.A. Confidential (1997)",
+        "On the Waterfront (1954)",
+        "Citizen Kane (1941)",
+        "The Wizard of Oz (1939)",
+        "Parasite (2019)",
+        "Schindler’s List (1993)",
+      ],
+    },
+  };
+
+  const renderBestMovies = () => {
+    const sel = $("#bestListSelect");
+    const out = $("#bestMoviesList");
+    const meta = $("#bestListMeta");
+    if (!sel || !out) return;
+
+    const key = sel.value;
+    const cfg = BEST_LISTS[key] || BEST_LISTS.sight_sound_critics_2022;
+    if (meta) meta.textContent = cfg.meta;
+
+    out.innerHTML = cfg.items.map((t, i) => `
+      <div class="titem">
+        <div class="ticon">⭐</div>
+        <div style="width:100%;">
+          <h4 style="margin:0 0 2px;">#${i + 1} — ${escapeHtml(t)}</h4>
+          <p style="margin:0;">Нажми “Добавить” слева, чтобы занести в любимые</p>
+        </div>
+      </div>
+    `).join("");
+  };
+
+  const renderFavMovies = () => {
+    const listEl = $("#favMoviesList");
+    const cntEl = $("#favMoviesCount");
+    if (!listEl) return;
+
+    const list = moviesState.fav;
+
+    if (cntEl) cntEl.textContent = list.length ? `${list.length} шт.` : "пусто";
+
+    if (!list.length) {
+      listEl.innerHTML = `
+        <div class="hint">
+          <div style="margin-top:1px;"><span class="kbd">🎬</span></div>
+          <div>Добавь любимые фильмы — они сохранятся в браузере.</div>
+        </div>`;
+      return;
+    }
+
+    listEl.innerHTML = list.map(m => `
+      <div class="titem">
+        <div class="ticon">🎬</div>
+        <div style="width:100%;">
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <h4 style="margin:0;">${escapeHtml(m.title)}${m.year ? ` (${escapeHtml(m.year)})` : ""}</h4>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <span class="kbd" data-fdel="${m.id}" style="cursor:pointer;">Удалить</span>
+            </div>
+          </div>
+          ${m.note ? `<p style="margin-top:6px; white-space:pre-wrap;">${escapeHtml(m.note)}</p>` : `<p style="margin-top:6px; color:var(--muted);">—</p>`}
+        </div>
+      </div>
+    `).join("");
+
+    $$("[data-fdel]", listEl).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-fdel");
+        moviesState.fav = moviesState.fav.filter(x => x.id !== id);
+        save(KEY.MOVIES_FAV, moviesState.fav);
+        renderFavMovies();
+        toast("Удалено");
+      });
+    });
+  };
+
+  const initMovies = () => {
+    moviesState.fav = load(KEY.MOVIES_FAV, []);
+    if (!Array.isArray(moviesState.fav)) moviesState.fav = [];
+
+    const titleEl = $("#favMovieTitle");
+    const yearEl = $("#favMovieYear");
+    const noteEl = $("#favMovieNote");
+    const addBtn = $("#addFavMovieBtn");
+    const resetBtn = $("#resetFavMoviesBtn");
+    const bestSel = $("#bestListSelect");
+
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        const title = String(titleEl?.value || "").trim();
+        const year = String(yearEl?.value || "").trim();
+        const note = String(noteEl?.value || "").trim();
+
+        if (!title) return toast("Напиши название 🙂");
+
+        const item = { id: cryptoRandomId(), title, year, note, ts: Date.now() };
+        moviesState.fav.unshift(item);
+        save(KEY.MOVIES_FAV, moviesState.fav);
+        renderFavMovies();
+
+        if (titleEl) titleEl.value = "";
+        if (yearEl) yearEl.value = "";
+        if (noteEl) noteEl.value = "";
+        toast("Добавлено 🎬");
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        moviesState.fav = [];
+        save(KEY.MOVIES_FAV, moviesState.fav);
+        renderFavMovies();
+        toast("Очищено");
+      });
+    }
+
+    if (bestSel) bestSel.addEventListener("change", renderBestMovies);
+
+    renderFavMovies();
+    renderBestMovies();
+  };
+
+  /* =========================
+     Message builder
+  ========================== */
+  const initMessage = () => {
+    const shortEl = $("#msgShort");
+    const emojiEl = $("#msgEmoji");
+    const longEl = $("#msgLong");
+    const outEl = $("#msgOut");
+
+    const makeBtn = $("#makeMsgBtn");
+    const copyBtn = $("#copyMsgBtn");
+    const shareBtn = $("#shareMsgBtn");
+
+    const build = () => {
+      const s = String(shortEl?.value || "").trim();
+      const e = String(emojiEl?.value || "").trim();
+      const l = String(longEl?.value || "").trim();
+
+      const parts = [];
+      if (s) parts.push(s + (e ? " " + e : ""));
+      else if (e) parts.push(e);
+      if (l) parts.push(l);
+
+      const msg = parts.join("\n\n") || "—";
+      if (outEl) outEl.textContent = msg;
+      return msg === "—" ? "" : msg;
+    };
+
+    if (makeBtn) makeBtn.addEventListener("click", () => { build(); toast("Готово ✨"); });
+
+    if (copyBtn) copyBtn.addEventListener("click", async () => {
+      const msg = build();
+      if (!msg) return toast("Нечего копировать 🙂");
+      await copyText(msg);
+    });
+
+    if (shareBtn) shareBtn.addEventListener("click", async () => {
+      const msg = build();
+      if (!msg) return toast("Нечего отправлять 🙂");
+      await share({ title:"For Anny 💙", text: msg, url: location.href });
+    });
+  };
+
+  /* =========================
+     Modal (gallery view)
+  ========================== */
+  const modal = $("#modal");
+  const modalImg = $("#modalImg");
+  const modalCap = $("#modalCaption");
+  const modalClose = $("#modalClose");
+
+  const openModal = (src, caption) => {
+    if (!modal || !modalImg) return;
+    modalImg.src = src;
+    modalImg.alt = caption || "";
+    if (modalCap) modalCap.textContent = caption || "—";
+    modal.classList.add("show");
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove("show");
+    if (modalImg) modalImg.src = "";
+  };
+
+  const initModal = () => {
+    if (!modal) return;
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    if (modalClose) modalClose.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  };
+
+  /* =========================
+     Top actions (Share / Copy)
+  ========================== */
+  const initTopActions = () => {
+    const shareBtn = $("#shareBtn");
+    const copyBtn = $("#copyLinkBtn");
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        const txt = `For Anny 💙\n${location.href}`;
+        await copyText(txt);
+      });
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener("click", async () => {
+        const text = "For Anny 💙";
+        await share({ title:"For Anny 💙", text, url: location.href });
+      });
+    }
+  };
+
+  /* =========================
+     Easter egg (logo 7x)
+  ========================== */
+  const initEaster = () => {
+    const logo = $("#logo");
+    const easter = $("#easter");
+    if (!logo || !easter) return;
+
+    let clicks = 0;
+    let timer = null;
+
+    logo.addEventListener("click", () => {
+      clicks++;
+      clearTimeout(timer);
+      timer = setTimeout(() => (clicks = 0), 1200);
+
+      if (clicks >= 7) {
+        clicks = 0;
+        easter.classList.add("show");
+        toast("Секретик найден 😌✨");
+        setTimeout(() => easter.classList.remove("show"), 1400);
+      }
+    });
+  };
+
+  /* =========================
+     Utilities
+  ========================== */
+  const cryptoRandomId = () => {
+    if (crypto && crypto.randomUUID) return crypto.randomUUID();
+    return "id_" + Math.random().toString(16).slice(2) + "_" + Date.now().toString(16);
+  };
+
+  const escapeHtml = (s) => String(s || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+  const formatDateTime = (ts) => {
+    const d = new Date(ts);
+    if (isNaN(d.getTime())) return "";
+    const dd = pad2(d.getDate());
+    const mm = pad2(d.getMonth() + 1);
+    const yy = d.getFullYear();
+    const hh = pad2(d.getHours());
+    const mi = pad2(d.getMinutes());
+    return `${dd}.${mm}.${yy} ${hh}:${mi}`;
+  };
+
+  /* =========================
+     Init / Boot
+  ========================== */
+  const boot = () => {
+    setHeaderDates();
+    initReveal();
+    initTheme();
+    initHeroBg();
+    initTimeline();
+    initCompliments();
+    initModal();
+    initTopActions();
+    initEaster();
+
+    initGallery();
+    initNotes();
+    initCountdown();
+    initMovies();
+    initMusic();
+    initMessage();
+
+    // initial stats fallback
+    const sp = $("#statPhotos");
+    const sn = $("#statNotes");
+    if (sp && !sp.textContent.trim()) sp.textContent = "0";
+    if (sn && !sn.textContent.trim()) sn.textContent = "0";
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
+  </script>
+</body>
+</html>
